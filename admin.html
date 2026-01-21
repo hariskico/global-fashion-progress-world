@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Eren Travel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ocean: #1a3a52;
+            --ocean-light: #2d5570;
+            --ocean-dark: #0f2433;
+            --gold: #e8a838;
+            --gold-light: #f5c263;
+            --gold-dark: #d4951f;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --gray: #6b7280;
+            --dark: #1f2937;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+        }
+
+        /* Login Screen */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+            padding: 20px;
+        }
+
+        .login-box {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .login-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--ocean);
+            margin-bottom: 10px;
+        }
+
+        .login-logo span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .login-subtitle {
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--ocean);
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--ocean);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--gold);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .login-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(232, 168, 56, 0.4);
+        }
+
+        .error-message {
+            background: #fee;
+            color: var(--danger);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Admin Dashboard */
+        .admin-container {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .admin-container.active {
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--ocean);
+            color: var(--white);
+            padding: 30px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .sidebar-logo span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 30px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: rgba(232, 168, 56, 0.2);
+            color: var(--gold);
+            border-left: 4px solid var(--gold);
+        }
+
+        .sidebar-menu .icon {
+            font-size: 1.3rem;
+        }
+
+        .logout-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--ocean);
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Dashboard Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .stat-card.gold .stat-icon {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--ocean);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(232, 168, 56, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--ocean);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--ocean-dark);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: var(--white);
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Table */
+        .table-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .table-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--ocean);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: var(--cream);
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--ocean);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tbody tr:hover {
+            background: var(--cream);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--ocean);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--danger);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--ocean);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--ocean);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--ocean);
+            color: var(--white);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            transform: translateY(200px);
+            opacity: 0;
+            transition: all 0.4s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                z-index: 1001;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <h1 class="login-logo">Eren <span>Travel</span></h1>
+            <p class="login-subtitle">Admin Panel</p>
+
+            <div class="error-message" id="loginError">Username ose password gabim!</div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Shkruani username..." required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Shkruani password..." required>
+                </div>
+                <button type="submit" class="login-btn">Hyr në Panel</button>
+            </form>
+
+            <p style="margin-top: 30px; color: var(--gray); font-size: 0.85rem;">
+                Default: admin / admin123
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container" id="adminDashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">Eren <span>Travel</span></div>
+
+            <ul class="sidebar-menu">
+                <li><a href="#" class="menu-link active" data-section="dashboard">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a></li>
+                <li><a href="#" class="menu-link" data-section="tours">
+                    <span class="icon">🧳</span>
+                    <span>Paketa Turistike</span>
+                </a></li>
+                <li><a href="#" class="menu-link" data-section="categories">
+                    <span class="icon">📂</span>
+                    <span>Kategoritë</span>
+                </a></li>
+                <li><a href="#" class="menu-link" data-section="testimonials">
+                    <span class="icon">⭐</span>
+                    <span>Dëshmitë</span>
+                </a></li>
+                <li><a href="#" class="menu-link" data-section="settings">
+                    <span class="icon">⚙️</span>
+                    <span>Cilësimet</span>
+                </a></li>
+            </ul>
+
+            <button class="logout-btn" onclick="logout()">🚪 Dil nga Paneli</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p>Mirë se vini në panelin e administrimit</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🧳</div>
+                        <div class="stat-label">Paketa Aktive</div>
+                        <div class="stat-value" id="statTours">0</div>
+                    </div>
+                    <div class="stat-card gold">
+                        <div class="stat-icon">📂</div>
+                        <div class="stat-label">Kategoritë</div>
+                        <div class="stat-value" id="statCategories">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-label">Dëshmitë</div>
+                        <div class="stat-value" id="statTestimonials">0</div>
+                    </div>
+                    <div class="stat-card gold">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-label">Vizitorë (simulim)</div>
+                        <div class="stat-value">1,234</div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h2>Veprime të Shpejta</h2>
+                    </div>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="showSection('tours')">➕ Shto Paketë</button>
+                        <button class="btn btn-secondary" onclick="showSection('categories')">📂 Menaxho Kategoritë</button>
+                        <button class="btn btn-primary" onclick="showSection('testimonials')">⭐ Shto Dëshmi</button>
+                        <button class="btn btn-secondary" onclick="window.open('index.html', '_blank')">👁️ Shiko Faqen</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tours Section -->
+            <section class="content-section" id="tours">
+                <div class="page-header">
+                    <h1>Paketa Turistike</h1>
+                    <p>Menaxhoni paketat e udhëtimit</p>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h2>Të Gjitha Paketat</h2>
+                        <button class="btn btn-primary" onclick="openTourModal()">➕ Shto Paketë të Re</button>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Titulli</th>
+                                <th>Kategoria</th>
+                                <th>Çmimi</th>
+                                <th>Kohëzgjatja</th>
+                                <th>Veprimet</th>
+                            </tr>
+                        </thead>
+                        <tbody id="toursTableBody">
+                            <!-- Tours will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="content-section" id="categories">
+                <div class="page-header">
+                    <h1>Kategoritë</h1>
+                    <p>Menaxhoni kategoritë e tureve</p>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h2>Të Gjitha Kategoritë</h2>
+                        <button class="btn btn-primary" onclick="openCategoryModal()">➕ Shto Kategori të Re</button>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ikona</th>
+                                <th>Titulli</th>
+                                <th>Përshkrimi</th>
+                                <th>Veprimet</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoriesTableBody">
+                            <!-- Categories will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="content-section" id="testimonials">
+                <div class="page-header">
+                    <h1>Dëshmitë e Klientëve</h1>
+                    <p>Menaxhoni komentet dhe dëshmitë</p>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h2>Të Gjitha Dëshmitë</h2>
+                        <button class="btn btn-primary" onclick="openTestimonialModal()">➕ Shto Dëshmi të Re</button>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Emri</th>
+                                <th>Vendndodhja</th>
+                                <th>Vlerësimi</th>
+                                <th>Teksti</th>
+                                <th>Veprimet</th>
+                            </tr>
+                        </thead>
+                        <tbody id="testimonialsTableBody">
+                            <!-- Testimonials will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="content-section" id="settings">
+                <div class="page-header">
+                    <h1>Cilësimet</h1>
+                    <p>Konfigurimet e panelit</p>
+                </div>
+
+                <div class="table-container">
+                    <h2 style="margin-bottom: 30px;">Ndrysho Password</h2>
+                    <form id="passwordForm">
+                        <div class="form-group">
+                            <label>Password i Ri</label>
+                            <input type="password" id="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Konfirmo Password</label>
+                            <input type="password" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ruaj Ndryshimet</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Tour Modal -->
+    <div class="modal" id="tourModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="tourModalTitle">Shto Paketë të Re</h2>
+                <button class="close-modal" onclick="closeTourModal()">&times;</button>
+            </div>
+            <form id="tourForm">
+                <input type="hidden" id="tourId">
+                <div class="form-group">
+                    <label>Titulli</label>
+                    <input type="text" id="tourTitle" required placeholder="p.sh. Dubaj - Qyteti i Artë">
+                </div>
+                <div class="form-group">
+                    <label>Kategoria</label>
+                    <select id="tourCategory" required>
+                        <option value="">Zgjidhni kategorinë...</option>
+                        <option value="Guida me Autobus">Guida me Autobus</option>
+                        <option value="Udhëtime me Avion">Udhëtime me Avion</option>
+                        <option value="Pushime Ekzotike">Pushime Ekzotike</option>
+                        <option value="Turne Individuale">Turne Individuale</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Përshkrimi</label>
+                    <textarea id="tourDescription" required placeholder="Shkruani përshkrimin e paketës..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Çmimi (€)</label>
+                    <input type="number" id="tourPrice" required placeholder="890">
+                </div>
+                <div class="form-group">
+                    <label>Kohëzgjatja</label>
+                    <input type="text" id="tourDuration" required placeholder="5 Ditë / 4 Net">
+                </div>
+                <div class="form-group">
+                    <label>Numri i Personave</label>
+                    <input type="text" id="tourPeople" required placeholder="2-6 Persona">
+                </div>
+                <div class="form-group">
+                    <label>Ikona (Emoji)</label>
+                    <input type="text" id="tourIcon" required placeholder="🏙️">
+                </div>
+                <div class="form-group">
+                    <label>Badge (Opsionale)</label>
+                    <input type="text" id="tourBadge" placeholder="Popullore, E Re, Ofertë...">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Ruaj Paketën</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeTourModal()">Anullo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Category Modal -->
+    <div class="modal" id="categoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="categoryModalTitle">Shto Kategori të Re</h2>
+                <button class="close-modal" onclick="closeCategoryModal()">&times;</button>
+            </div>
+            <form id="categoryForm">
+                <input type="hidden" id="categoryId">
+                <div class="form-group">
+                    <label>Titulli</label>
+                    <input type="text" id="categoryTitle" required placeholder="p.sh. Guida me Autobus">
+                </div>
+                <div class="form-group">
+                    <label>Përshkrimi</label>
+                    <textarea id="categoryDescription" required placeholder="Shkruani përshkrimin..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Ikona (Emoji)</label>
+                    <input type="text" id="categoryIcon" required placeholder="🚌">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Ruaj Kategorinë</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeCategoryModal()">Anullo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Testimonial Modal -->
+    <div class="modal" id="testimonialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="testimonialModalTitle">Shto Dëshmi të Re</h2>
+                <button class="close-modal" onclick="closeTestimonialModal()">&times;</button>
+            </div>
+            <form id="testimonialForm">
+                <input type="hidden" id="testimonialId">
+                <div class="form-group">
+                    <label>Emri i Klientit</label>
+                    <input type="text" id="testimonialName" required placeholder="p.sh. Arlinda Krasniqi">
+                </div>
+                <div class="form-group">
+                    <label>Vendndodhja</label>
+                    <input type="text" id="testimonialLocation" required placeholder="p.sh. Prishtinë">
+                </div>
+                <div class="form-group">
+                    <label>Teksti i Dëshmisë</label>
+                    <textarea id="testimonialText" required placeholder="Shkruani dëshminë e klientit..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Vlerësimi (1-5)</label>
+                    <select id="testimonialRating" required>
+                        <option value="5">⭐⭐⭐⭐⭐ (5 yje)</option>
+                        <option value="4">⭐⭐⭐⭐ (4 yje)</option>
+                        <option value="3">⭐⭐⭐ (3 yje)</option>
+                        <option value="2">⭐⭐ (2 yje)</option>
+                        <option value="1">⭐ (1 yll)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Avatar (Iniciale)</label>
+                    <input type="text" id="testimonialAvatar" required placeholder="AK" maxlength="2">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Ruaj Dëshminë</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeTestimonialModal()">Anullo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Authentication
+        const ADMIN_CREDENTIALS = {
+            username: 'admin',
+            password: 'admin123'
+        };
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminDashboard').classList.add('active');
+                localStorage.setItem('adminLoggedIn', 'true');
+                loadDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            location.reload();
+        }
+
+        // Check if already logged in
+        if (localStorage.getItem('adminLoggedIn') === 'true') {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminDashboard').classList.add('active');
+            loadDashboard();
+        }
+
+        // Navigation
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = this.getAttribute('data-section');
+                showSection(section);
+
+                document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        function showSection(sectionName) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionName).classList.add('active');
+
+            document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+            document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
+
+            if (sectionName === 'tours') loadTours();
+            if (sectionName === 'categories') loadCategories();
+            if (sectionName === 'testimonials') loadTestimonials();
+        }
+
+        // Toast Notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Load Dashboard
+        function loadDashboard() {
+            const tours = JSON.parse(localStorage.getItem('erenTravelTours') || '[]');
+            const categories = JSON.parse(localStorage.getItem('erenTravelCategories') || '[]');
+            const testimonials = JSON.parse(localStorage.getItem('erenTravelTestimonials') || '[]');
+
+            document.getElementById('statTours').textContent = tours.length;
+            document.getElementById('statCategories').textContent = categories.length;
+            document.getElementById('statTestimonials').textContent = testimonials.length;
+        }
+
+        // TOURS Management
+        function loadTours() {
+            const tours = JSON.parse(localStorage.getItem('erenTravelTours') || '[]');
+            const tbody = document.getElementById('toursTableBody');
+
+            tbody.innerHTML = tours.map(tour => `
+                <tr>
+                    <td>${tour.id}</td>
+                    <td><strong>${tour.title}</strong></td>
+                    <td>${tour.category}</td>
+                    <td>€${tour.price}</td>
+                    <td>${tour.duration}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-secondary" onclick="editTour(${tour.id})">✏️ Modifiko</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteTour(${tour.id})">🗑️ Fshi</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openTourModal(tourId = null) {
+            const modal = document.getElementById('tourModal');
+            const form = document.getElementById('tourForm');
+            form.reset();
+
+            if (tourId) {
+                const tours = JSON.parse(localStorage.getItem('erenTravelTours') || '[]');
+                const tour = tours.find(t => t.id === tourId);
+                if (tour) {
+                    document.getElementById('tourModalTitle').textContent = 'Modifiko Paketën';
+                    document.getElementById('tourId').value = tour.id;
+                    document.getElementById('tourTitle').value = tour.title;
+                    document.getElementById('tourCategory').value = tour.category;
+                    document.getElementById('tourDescription').value = tour.description;
+                    document.getElementById('tourPrice').value = tour.price;
+                    document.getElementById('tourDuration').value = tour.duration;
+                    document.getElementById('tourPeople').value = tour.people;
+                    document.getElementById('tourIcon').value = tour.icon;
+                    document.getElementById('tourBadge').value = tour.badge || '';
+                }
+            } else {
+                document.getElementById('tourModalTitle').textContent = 'Shto Paketë të Re';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeTourModal() {
+            document.getElementById('tourModal').classList.remove('active');
+        }
+
+        function editTour(id) {
+            openTourModal(id);
+        }
+
+        function deleteTour(id) {
+            if (confirm('Jeni i sigurt që dëshironi ta fshini këtë paketë?')) {
+                let tours = JSON.parse(localStorage.getItem('erenTravelTours') || '[]');
+                tours = tours.filter(t => t.id !== id);
+                localStorage.setItem('erenTravelTours', JSON.stringify(tours));
+                loadTours();
+                loadDashboard();
+                showToast('Paketa u fshi me sukses!', 'success');
+            }
+        }
+
+        document.getElementById('tourForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const tourId = document.getElementById('tourId').value;
+            let tours = JSON.parse(localStorage.getItem('erenTravelTours') || '[]');
+
+            const tourData = {
+                id: tourId ? parseInt(tourId) : Date.now(),
+                title: document.getElementById('tourTitle').value,
+                category: document.getElementById('tourCategory').value,
+                description: document.getElementById('tourDescription').value,
+                price: parseFloat(document.getElementById('tourPrice').value),
+                duration: document.getElementById('tourDuration').value,
+                people: document.getElementById('tourPeople').value,
+                icon: document.getElementById('tourIcon').value,
+                badge: document.getElementById('tourBadge').value
+            };
+
+            if (tourId) {
+                const index = tours.findIndex(t => t.id === parseInt(tourId));
+                tours[index] = tourData;
+                showToast('Paketa u përditësua me sukses!');
+            } else {
+                tours.push(tourData);
+                showToast('Paketa u shtua me sukses!');
+            }
+
+            localStorage.setItem('erenTravelTours', JSON.stringify(tours));
+            closeTourModal();
+            loadTours();
+            loadDashboard();
+        });
+
+        // CATEGORIES Management
+        function loadCategories() {
+            const categories = JSON.parse(localStorage.getItem('erenTravelCategories') || '[]');
+            const tbody = document.getElementById('categoriesTableBody');
+
+            tbody.innerHTML = categories.map(cat => `
+                <tr>
+                    <td>${cat.id}</td>
+                    <td style="font-size: 2rem;">${cat.icon}</td>
+                    <td><strong>${cat.title}</strong></td>
+                    <td>${cat.description}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-secondary" onclick="editCategory(${cat.id})">✏️ Modifiko</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteCategory(${cat.id})">🗑️ Fshi</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openCategoryModal(categoryId = null) {
+            const modal = document.getElementById('categoryModal');
+            const form = document.getElementById('categoryForm');
+            form.reset();
+
+            if (categoryId) {
+                const categories = JSON.parse(localStorage.getItem('erenTravelCategories') || '[]');
+                const category = categories.find(c => c.id === categoryId);
+                if (category) {
+                    document.getElementById('categoryModalTitle').textContent = 'Modifiko Kategorinë';
+                    document.getElementById('categoryId').value = category.id;
+                    document.getElementById('categoryTitle').value = category.title;
+                    document.getElementById('categoryDescription').value = category.description;
+                    document.getElementById('categoryIcon').value = category.icon;
+                }
+            } else {
+                document.getElementById('categoryModalTitle').textContent = 'Shto Kategori të Re';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeCategoryModal() {
+            document.getElementById('categoryModal').classList.remove('active');
+        }
+
+        function editCategory(id) {
+            openCategoryModal(id);
+        }
+
+        function deleteCategory(id) {
+            if (confirm('Jeni i sigurt që dëshironi ta fshini këtë kategori?')) {
+                let categories = JSON.parse(localStorage.getItem('erenTravelCategories') || '[]');
+                categories = categories.filter(c => c.id !== id);
+                localStorage.setItem('erenTravelCategories', JSON.stringify(categories));
+                loadCategories();
+                loadDashboard();
+                showToast('Kategoria u fshi me sukses!', 'success');
+            }
+        }
+
+        document.getElementById('categoryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const categoryId = document.getElementById('categoryId').value;
+            let categories = JSON.parse(localStorage.getItem('erenTravelCategories') || '[]');
+
+            const categoryData = {
+                id: categoryId ? parseInt(categoryId) : Date.now(),
+                title: document.getElementById('categoryTitle').value,
+                description: document.getElementById('categoryDescription').value,
+                icon: document.getElementById('categoryIcon').value
+            };
+
+            if (categoryId) {
+                const index = categories.findIndex(c => c.id === parseInt(categoryId));
+                categories[index] = categoryData;
+                showToast('Kategoria u përditësua me sukses!');
+            } else {
+                categories.push(categoryData);
+                showToast('Kategoria u shtua me sukses!');
+            }
+
+            localStorage.setItem('erenTravelCategories', JSON.stringify(categories));
+            closeCategoryModal();
+            loadCategories();
+            loadDashboard();
+        });
+
+        // TESTIMONIALS Management
+        function loadTestimonials() {
+            const testimonials = JSON.parse(localStorage.getItem('erenTravelTestimonials') || '[]');
+            const tbody = document.getElementById('testimonialsTableBody');
+
+            tbody.innerHTML = testimonials.map(t => `
+                <tr>
+                    <td>${t.id}</td>
+                    <td><strong>${t.name}</strong></td>
+                    <td>${t.location}</td>
+                    <td>${'⭐'.repeat(t.rating)}</td>
+                    <td>${t.text.substring(0, 50)}...</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-secondary" onclick="editTestimonial(${t.id})">✏️ Modifiko</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(${t.id})">🗑️ Fshi</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openTestimonialModal(testimonialId = null) {
+            const modal = document.getElementById('testimonialModal');
+            const form = document.getElementById('testimonialForm');
+            form.reset();
+
+            if (testimonialId) {
+                const testimonials = JSON.parse(localStorage.getItem('erenTravelTestimonials') || '[]');
+                const testimonial = testimonials.find(t => t.id === testimonialId);
+                if (testimonial) {
+                    document.getElementById('testimonialModalTitle').textContent = 'Modifiko Dëshminë';
+                    document.getElementById('testimonialId').value = testimonial.id;
+                    document.getElementById('testimonialName').value = testimonial.name;
+                    document.getElementById('testimonialLocation').value = testimonial.location;
+                    document.getElementById('testimonialText').value = testimonial.text;
+                    document.getElementById('testimonialRating').value = testimonial.rating;
+                    document.getElementById('testimonialAvatar').value = testimonial.avatar;
+                }
+            } else {
+                document.getElementById('testimonialModalTitle').textContent = 'Shto Dëshmi të Re';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeTestimonialModal() {
+            document.getElementById('testimonialModal').classList.remove('active');
+        }
+
+        function editTestimonial(id) {
+            openTestimonialModal(id);
+        }
+
+        function deleteTestimonial(id) {
+            if (confirm('Jeni i sigurt që dëshironi ta fshini këtë dëshmi?')) {
+                let testimonials = JSON.parse(localStorage.getItem('erenTravelTestimonials') || '[]');
+                testimonials = testimonials.filter(t => t.id !== id);
+                localStorage.setItem('erenTravelTestimonials', JSON.stringify(testimonials));
+                loadTestimonials();
+                loadDashboard();
+                showToast('Dëshmia u fshi me sukses!', 'success');
+            }
+        }
+
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const testimonialId = document.getElementById('testimonialId').value;
+            let testimonials = JSON.parse(localStorage.getItem('erenTravelTestimonials') || '[]');
+
+            const testimonialData = {
+                id: testimonialId ? parseInt(testimonialId) : Date.now(),
+                name: document.getElementById('testimonialName').value,
+                location: document.getElementById('testimonialLocation').value,
+                text: document.getElementById('testimonialText').value,
+                rating: parseInt(document.getElementById('testimonialRating').value),
+                avatar: document.getElementById('testimonialAvatar').value.toUpperCase()
+            };
+
+            if (testimonialId) {
+                const index = testimonials.findIndex(t => t.id === parseInt(testimonialId));
+                testimonials[index] = testimonialData;
+                showToast('Dëshmia u përditësua me sukses!');
+            } else {
+                testimonials.push(testimonialData);
+                showToast('Dëshmia u shtua me sukses!');
+            }
+
+            localStorage.setItem('erenTravelTestimonials', JSON.stringify(testimonials));
+            closeTestimonialModal();
+            loadTestimonials();
+            loadDashboard();
+        });
+
+        // Settings - Change Password
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newPass = document.getElementById('newPassword').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
+
+            if (newPass === confirmPass) {
+                ADMIN_CREDENTIALS.password = newPass;
+                showToast('Password u ndryshua me sukses!');
+                this.reset();
+            } else {
+                showToast('Password-et nuk përputhen!', 'error');
+            }
+        });
+    </script>
+</body>
+</html>
