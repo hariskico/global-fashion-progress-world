@@ -3,224 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Global Fashion Progress World - Konkurse Ndërkombëtare Mode, Akademi Mode, Agjenci Modelësh dhe Evente Mode. Drejtuar nga Lidiana Kockici.">
-    <meta name="keywords" content="fashion, mode, konkurse mode, akademi mode, modele, evente mode, albania, kosova, global fashion">
-    <title>Global Fashion Progress World | Konkurse Ndërkombëtare Mode</title>
-    
-    <!-- Google Fonts -->
+    <meta name="description" content="Eren Travel - Agjensi profesionale udhëtimi. Paketa eksluzive për çdo destinacion.">
+    <meta name="keywords" content="udhëtime, pushime, paketa turistike, eren travel, agjensi udhetimi">
+    <title>Eren Travel | Agjensi Profesionale Udhëtimi</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --gold: #c9a962;
-            --gold-light: #e8d5a3;
-            --gold-dark: #8b7355;
-            --black: #0a0a0a;
-            --black-light: #1a1a1a;
-            --black-medium: #2a2a2a;
-            --white: #fafafa;
-            --white-dim: #e0e0e0;
-            --gray: #888888;
+            --ocean: #1a3a52;
+            --ocean-light: #2d5570;
+            --ocean-dark: #0f2433;
+            --gold: #e8a838;
+            --gold-light: #f5c263;
+            --gold-dark: #d4951f;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --gray: #6b7280;
+            --dark: #1f2937;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--black); }
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 4px;
-        }
-        .loader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--black);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-        .loader.hidden { opacity: 0; visibility: hidden; }
-        .loader-content { text-align: center; }
-        .loader-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 8px;
-            color: var(--gold);
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--ocean); border-radius: 5px; }
+
+        /* Navigation */
         nav {
             position: fixed;
-            top: 0; left: 0;
+            top: 0;
             width: 100%;
-            padding: 25px 60px;
+            padding: 20px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
             transition: all 0.4s ease;
+            background: transparent;
         }
+
         nav.scrolled {
-            background: rgba(10, 10, 10, 0.98);
+            background: rgba(26, 58, 82, 0.98);
             padding: 15px 60px;
-            box-shadow: 0 2px 30px rgba(201, 169, 98, 0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
+
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 400;
-            letter-spacing: 4px;
-            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
             text-decoration: none;
-            transition: all 0.3s ease;
+            letter-spacing: 1px;
         }
-        .logo:hover {
-            color: var(--gold-light);
-            text-shadow: 0 0 20px rgba(201, 169, 98, 0.5);
+
+        .logo span { color: var(--gold); font-style: italic; }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
         }
-        .nav-links { display: flex; gap: 40px; list-style: none; }
+
         .nav-links a {
             color: var(--white);
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            transition: color 0.3s;
             position: relative;
-            padding: 5px 0;
-            transition: color 0.3s ease;
         }
+
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
             width: 0;
-            height: 1px;
+            height: 2px;
             background: var(--gold);
-            transition: width 0.3s ease;
+            transition: width 0.3s;
         }
-        .nav-links a:hover {
-            color: var(--gold);
-        }
+
+        .nav-links a:hover { color: var(--gold); }
         .nav-links a:hover::after { width: 100%; }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
             gap: 6px;
             cursor: pointer;
-            z-index: 1001;
         }
+
         .menu-toggle span {
-            width: 30px;
-            height: 2px;
-            background: var(--gold);
-            transition: all 0.3s ease;
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s;
         }
+
+        /* Hero Section */
         .hero {
             height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 58, 82, 0.95), rgba(47, 85, 112, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231a3a52" width="1200" height="600"/><path fill="%232d5570" opacity="0.3" d="M0 300 Q300 200 600 300 T1200 300 L1200 600 L0 600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
         }
-        .hero-bg {
+
+        .hero::before {
+            content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(ellipse at 20% 80%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(201, 169, 98, 0.05) 0%, transparent 50%),
-                        linear-gradient(135deg, var(--black) 0%, var(--black-light) 100%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(232, 168, 56, 0.1) 0%, transparent 50%);
         }
-        .hero-pattern {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a962' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
+
         .hero-content {
             text-align: center;
+            color: var(--white);
             z-index: 10;
             padding: 0 20px;
+            animation: fadeInUp 1s ease;
         }
-        .hero-subtitle {
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
-        }
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 300;
-            letter-spacing: 8px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.7s forwards;
-        }
-        .hero-title span { display: block; color: var(--gold); font-style: italic; font-weight: 400; }
-        .hero-tagline {
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-            color: var(--gray);
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.9s forwards;
-        }
-        .hero-cta { display: inline-flex; gap: 30px; opacity: 0; animation: fadeInUp 1s ease 1.1s forwards; }
-        .btn {
-            padding: 18px 45px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-decoration: none;
-            border: 1px solid var(--gold);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary {
-            background: var(--gold);
-            color: var(--black);
-        }
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--gold);
-            box-shadow: 0 0 30px rgba(201, 169, 98, 0.3);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--gold);
-        }
-        .btn-secondary:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -231,377 +156,661 @@
                 transform: translateY(0);
             }
         }
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards;
-        }
-        .scroll-indicator span { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); }
-        .scroll-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
-        }
-        @keyframes scrollPulse {
-            0%, 100% { opacity: 0.3; height: 60px; }
-            50% { opacity: 1; height: 80px; }
-        }
-        section { padding: 120px 60px; position: relative; }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 4px;
+
+        .hero-subtitle {
+            font-size: 1rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--gold);
             margin-bottom: 20px;
         }
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            letter-spacing: 4px;
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
         }
-        .section-title span { font-style: italic; color: var(--gold); }
-        .divider { width: 80px; height: 1px; background: var(--gold); margin: 30px auto; }
-        .about { background: var(--black-light); }
-        .about-content {
+
+        .hero-title span { color: var(--gold); font-style: italic; }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Search Box */
+        .search-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            grid-template-columns: repeat(3, 1fr) auto;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .search-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .search-field label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ocean);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .search-field input,
+        .search-field select {
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .search-field input:focus,
+        .search-field select:focus {
+            outline: none;
+            border-color: var(--ocean);
+        }
+
+        .search-btn {
+            align-self: flex-end;
+            padding: 12px 40px;
+            background: var(--gold);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(232, 168, 56, 0.4);
+        }
+
+        /* Stats */
+        .stats {
+            background: var(--ocean);
+            padding: 60px 60px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: var(--white);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--ocean);
+            margin-bottom: 20px;
+        }
+
+        .section-title span { color: var(--gold); font-style: italic; }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Tours Grid */
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
-        .about-image { position: relative; }
-        .about-image-box {
-            aspect-ratio: 4/5;
-            background: linear-gradient(135deg, var(--black-medium) 0%, var(--black) 100%);
-            border: 1px solid rgba(201, 169, 98, 0.2);
+
+        .tour-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .tour-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 4rem;
             position: relative;
             overflow: hidden;
         }
-        .about-image-box::before {
-            content: '';
+
+        .tour-badge {
             position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(201, 169, 98, 0.1), transparent 30%);
-            animation: rotate 10s linear infinite;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
-        @keyframes rotate { to { transform: rotate(360deg); } }
-        .about-image-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 40px;
-        }
-        .about-image-content .icon { font-size: 4rem; margin-bottom: 20px; }
-        .about-image-content h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--gold);
-            letter-spacing: 3px;
-        }
-        .about-frame {
+
+        .favorite-btn {
             position: absolute;
-            top: 20px; left: 20px; right: -20px; bottom: -20px;
-            border: 1px solid var(--gold);
-            opacity: 0.3;
-            z-index: -1;
+            top: 20px;
+            left: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s;
         }
-        .about-text h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-            line-height: 1.3;
+
+        .favorite-btn:hover {
+            transform: scale(1.1);
+            background: var(--gold);
         }
-        .about-text h3 span { color: var(--gold); font-style: italic; }
-        .about-text p {
+
+        .tour-content {
+            padding: 30px;
+        }
+
+        .tour-category {
+            color: var(--ocean);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .tour-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .tour-description {
             color: var(--gray);
             font-size: 0.95rem;
-            line-height: 1.9;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
-        .director-info { margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(201, 169, 98, 0.2); }
-        .director-info span { display: block; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-        .director-info h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            font-style: italic;
+
+        .tour-details {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
         }
-        .services { background: var(--black); }
-        .services-grid {
+
+        .tour-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .tour-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tour-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ocean);
+        }
+
+        .tour-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .book-btn {
+            padding: 12px 30px;
+            background: var(--ocean);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .book-btn:hover {
+            background: var(--ocean-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 58, 82, 0.3);
+        }
+
+        /* Categories */
+        .categories {
+            background: var(--white);
+        }
+
+        .categories-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             max-width: 1400px;
             margin: 0 auto;
         }
-        .service-card {
-            background: linear-gradient(135deg, var(--black-light) 0%, var(--black-medium) 100%);
-            padding: 50px 35px;
+
+        .category-card {
+            background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+            padding: 50px 30px;
+            border-radius: 20px;
             text-align: center;
-            border: 1px solid rgba(201, 169, 98, 0.1);
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(201, 169, 98, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-        .service-card:hover::before { transform: translateX(0); }
-        .service-icon { font-size: 3rem; margin-bottom: 25px; display: block; }
-        .service-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: var(--gold);
-            letter-spacing: 2px;
-        }
-        .service-card p { color: var(--gray); font-size: 0.85rem; line-height: 1.8; }
-        .gallery { background: var(--black-light); padding-bottom: 0; }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-        }
-        .gallery-item {
-            aspect-ratio: 1;
-            background: var(--black-medium);
-            position: relative;
-            overflow: hidden;
+            color: var(--white);
             cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
         }
-        .gallery-item::before {
+
+        .category-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, transparent 100%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(232, 168, 56, 0.2), transparent);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s;
         }
-        .gallery-item:hover::before { opacity: 1; }
-        .gallery-item-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+
+        .category-card:hover {
+            transform: translateY(-10px);
         }
-        .gallery-item:hover .gallery-item-content { opacity: 1; }
-        .gallery-item-content span {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--gold);
-            letter-spacing: 2px;
+
+        .category-card:hover::before {
+            opacity: 1;
         }
-        .stats {
-            background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 100%);
-            padding: 100px 60px;
+
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
         }
-        .stats-grid {
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .category-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background: var(--cream);
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 40px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        .stat-item {
+
+        .feature-card {
             text-align: center;
-            padding: 30px;
-            border: 1px solid rgba(201, 169, 98, 0.1);
-            transition: all 0.4s ease;
         }
-        .stat-item:hover {
-            border-color: var(--gold);
-            transform: scale(1.05);
-        }
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: var(--gold);
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-        .stat-label {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gray);
-        }
-        .contact { background: var(--black); }
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .contact-info h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-        .contact-info p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.9;
-            margin-bottom: 40px;
-        }
-        .contact-details { list-style: none; }
-        .contact-details li {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
-        }
-        .contact-details li:last-child { border-bottom: none; }
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border: 1px solid var(--gold);
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold);
+            color: var(--white);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            transition: all 0.4s;
         }
-        .contact-text span { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
-        .contact-text a,
-        .contact-text p {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: var(--ocean);
         }
-        .contact-text a:hover { color: var(--gold); }
-        .contact-form {
-            background: var(--black-light);
-            padding: 50px;
-            border: 1px solid rgba(201, 169, 98, 0.1);
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ocean);
+            margin-bottom: 15px;
         }
-        .contact-form h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-            color: var(--gold);
-        }
-        .form-group { margin-bottom: 25px; }
-        .form-group label {
-            display: block;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+
+        .feature-description {
             color: var(--gray);
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--ocean), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            color: var(--ocean);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .rating {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--cream);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.08);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--ocean);
+            font-size: 0.9rem;
+        }
+
         .form-group input,
         .form-group textarea {
-            width: 100%;
             padding: 15px;
-            background: var(--black);
-            border: 1px solid rgba(201, 169, 98, 0.2);
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            transition: border-color 0.3s ease;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.3s;
         }
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--gold);
+            border-color: var(--ocean);
         }
-        .form-group textarea { min-height: 120px; resize: vertical; }
-        .submit-btn {
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-contact-btn {
             width: 100%;
             padding: 18px;
             background: var(--gold);
+            color: var(--white);
             border: none;
-            color: var(--black);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s;
         }
-        .submit-btn:hover {
-            background: var(--gold-light);
-            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+
+        .submit-contact-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(232, 168, 56, 0.4);
         }
-        .social-links { display: flex; gap: 15px; margin-top: 40px; }
+
+        /* Footer */
+        footer {
+            background: var(--ocean);
+            color: var(--white);
+            padding: 80px 60px 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
         .social-link {
-            width: 50px;
-            height: 50px;
-            border: 1px solid rgba(201, 169, 98, 0.3);
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
             text-decoration: none;
-            color: var(--gold);
             font-size: 1.2rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
+
         .social-link:hover {
             background: var(--gold);
-            color: var(--black);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
-        footer {
-            background: var(--black-light);
-            padding: 60px;
-            text-align: center;
-            border-top: 1px solid rgba(201, 169, 98, 0.1);
-        }
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            letter-spacing: 5px;
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
             color: var(--gold);
-            margin-bottom: 20px;
         }
-        footer p { color: var(--gray); font-size: 0.8rem; letter-spacing: 1px; }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Mobile Menu */
         .mobile-menu {
             position: fixed;
             top: 0;
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: var(--black);
+            background: var(--ocean);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -610,287 +819,330 @@
             transition: right 0.5s ease;
             z-index: 999;
         }
-        .mobile-menu.active { right: 0; }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
         .mobile-menu a {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 2rem;
             color: var(--white);
             text-decoration: none;
-            letter-spacing: 3px;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
-        .mobile-menu a:hover { color: var(--gold); }
+
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
         @media (max-width: 1200px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 992px) {
-            section { padding: 80px 30px; }
-            nav { padding: 20px 30px; }
-            .nav-links { display: none; }
-            .menu-toggle { display: flex; }
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 50px;
+            .stats,
+            .categories-grid,
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
+
+        @media (max-width: 992px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            section {
+                padding: 80px 30px;
+            }
+
+            .search-box {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .hero-cta { flex-direction: column; gap: 15px; }
-            .btn { width: 100%; text-align: center; }
-            .contact-form { padding: 30px; }
+            .stats,
+            .categories-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 40px 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
-        @media (max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .stat-number { font-size: 2.5rem; }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="loader">
-        <div class="loader-content">
-            <div class="loader-logo">GFP WORLD</div>
-        </div>
-    </div>
-    <nav>
-        <a href="#" class="logo">GFP WORLD</a>
+    <nav id="navbar">
+        <a href="#" class="logo">Eren <span>Travel</span></a>
         <ul class="nav-links">
             <li><a href="#home">Kryefaqja</a></li>
-            <li><a href="#about">Rreth Nesh</a></li>
-            <li><a href="#services">Shërbimet</a></li>
-            <li><a href="#gallery">Galeria</a></li>
+            <li><a href="#tours">Paketa</a></li>
+            <li><a href="#categories">Kategoritë</a></li>
+            <li><a href="#testimonials">Dëshmi</a></li>
             <li><a href="#contact">Kontakti</a></li>
         </ul>
         <div class="menu-toggle" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
+
     <div class="mobile-menu" id="mobileMenu">
         <a href="#home" onclick="toggleMenu()">Kryefaqja</a>
-        <a href="#about" onclick="toggleMenu()">Rreth Nesh</a>
-        <a href="#services" onclick="toggleMenu()">Shërbimet</a>
-        <a href="#gallery" onclick="toggleMenu()">Galeria</a>
+        <a href="#tours" onclick="toggleMenu()">Paketa</a>
+        <a href="#categories" onclick="toggleMenu()">Kategoritë</a>
+        <a href="#testimonials" onclick="toggleMenu()">Dëshmi</a>
         <a href="#contact" onclick="toggleMenu()">Kontakti</a>
     </div>
+
     <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-pattern"></div>
         <div class="hero-content">
-            <p class="hero-subtitle">✦ Konkurse Ndërkombëtare Mode ✦</p>
-            <h1 class="hero-title">Global Fashion
-                <span>Progress World</span>
-            </h1>
-            <p class="hero-tagline">Elegancë • Stil • Sukses</p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">Na Kontaktoni</a>
-                <a href="#services" class="btn btn-secondary">Shërbimet Tona</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-    <section class="about" id="about">
-        <div class="section-header">
-            <p class="section-label">Rreth Nesh</p>
-            <h2 class="section-title">Kush <span>Jemi Ne</span></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="about-content">
-            <div class="about-image">
-                <div class="about-image-box">
-                    <div class="about-image-content">
-                        <span class="icon">👑</span>
-                        <h3>Excellence in Fashion</h3>
-                    </div>
+            <p class="hero-subtitle">✈ Zbuloni Botën me Ne ✈</p>
+            <h1 class="hero-title">Udhëtoni me <span>Stil</span></h1>
+            <p class="hero-description">Paketa eksluzive për destinacione të paharrueshme. Përjetoni aventura të reja me komoditet dhe sigurim të plotë.</p>
+
+            <div class="search-box">
+                <div class="search-field">
+                    <label>📍 Destinacioni</label>
+                    <input type="text" placeholder="Ku dëshironi të shkoni?">
                 </div>
-                <div class="about-frame"></div>
-            </div>
-            <div class="about-text">
-                <h3>Ndërtojmë <span>Karriera</span> në Botën e Modës</h3>
-                <p>Global Fashion Progress World është organizata ndërkombëtare e modës që ofron mundësi të jashtëzakonshme për talente të reja dhe profesionistë në industrinë e modës.</p>
-                <p>Ne organizojmë konkurse prestigjioze ndërkombëtare, ofrojmë trajnime profesionale në akademinë tonë të modës, menaxhojmë modele të talentuar dhe krijojmë evente spektakolare që bashkojnë stilin me elegancën.</p>
-                <p>Misioni ynë është të zbulojmë, zhvillojmë dhe promovojmë talentet më të mira, duke u ofruar atyre platformën e duhur për të shkëlqyer në skenën ndërkombëtare.</p>
-                <div class="director-info">
-                    <span>Drejtor</span>
-                    <h4>Lidiana Kockici</h4>
+                <div class="search-field">
+                    <label>📅 Data</label>
+                    <input type="date">
                 </div>
+                <div class="search-field">
+                    <label>👥 Personat</label>
+                    <select>
+                        <option>1 Person</option>
+                        <option>2 Persona</option>
+                        <option>3 Persona</option>
+                        <option>4+ Persona</option>
+                    </select>
+                </div>
+                <button class="search-btn">Kërko</button>
             </div>
         </div>
     </section>
-    <section class="services" id="services">
-        <div class="section-header">
-            <p class="section-label">Çfarë Ofrojmë</p>
-            <h2 class="section-title">Shërbimet <span>Tona</span></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="service-icon">🏆</span>
-                <h3>Konkurse Mode</h3>
-                <p>Konkurse prestigjioze ndërkombëtare që ofrojnë mundësi të jashtëzakonshme për modele dhe dizajnerë të talentuar nga e gjithë bota.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">🎓</span>
-                <h3>Akademi Mode</h3>
-                <p>Programe trajnimi profesionale për modelim, stilizim, makeup artistry dhe menaxhim të karrierës në industrinë e modës.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">⭐</span>
-                <h3>Agjenci Modelësh</h3>
-                <p>Menaxhim profesional i karrierës për modele, duke përfshirë casting, kontrata dhe mundësi pune ndërkombëtare.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">✨</span>
-                <h3>Evente Mode</h3>
-                <p>Organizim i eventeve ekskluzive të modës, fashion shows, gala nights dhe prezantime të koleksioneve të reja.</p>
-            </div>
-        </div>
-    </section>
-    <section class="gallery" id="gallery">
-        <div class="section-header">
-            <p class="section-label">Momente</p>
-            <h2 class="section-title">Galeria <span>Jonë</span></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item"><div class="gallery-item-content"><span>Fashion Show</span></div></div>
-            <div class="gallery-item"><div class="gallery-item-content"><span>Konkurse</span></div></div>
-            <div class="gallery-item"><div class="gallery-item-content"><span>Backstage</span></div></div>
-            <div class="gallery-item"><div class="gallery-item-content"><span>Red Carpet</span></div></div>
-            <div class="gallery-item"><div class="gallery-item-content"><span>Photoshoot</span></div></div>
-            <div class="gallery-item"><div class="gallery-item-content"><span>Awards</span></div></div>
-            <div class="gallery-item"><div class="gallery-item-content"><span>Training</span></div></div>
-            <div class="gallery-item"><div class="gallery-item-content"><span>Events</span></div></div>
-        </div>
-    </section>
+
     <div class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Modele të Trajnuar</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Konkurse Ndërkombëtare</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">20+</div>
-                <div class="stat-label">Vite Eksperiencë</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">30+</div>
-                <div class="stat-label">Shtete Partnere</div>
-            </div>
+        <div class="stat-item">
+            <div class="stat-number">1500+</div>
+            <div class="stat-label">Klientë të Lumtur</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Destinacione</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Vite Eksperiencë</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Kënaqësi</div>
         </div>
     </div>
+
+    <section id="tours">
+        <div class="section-header">
+            <p class="section-label">Ofertat Tona</p>
+            <h2 class="section-title">Paketa <span>Turistike</span></h2>
+            <p class="section-description">Zgjidhni nga paketat tona eksluzive dhe përjetoni udhëtime të paharrueshme</p>
+        </div>
+        <div class="tours-grid" id="toursContainer">
+            <!-- Tours will be loaded from localStorage -->
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <p class="section-label">Eksploro</p>
+            <h2 class="section-title">Kategoritë <span>Tona</span></h2>
+        </div>
+        <div class="categories-grid" id="categoriesContainer">
+            <!-- Categories will be loaded from localStorage -->
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="section-header">
+            <p class="section-label">Pse Na Zgjidhni</p>
+            <h2 class="section-title">Eren <span>Travel</span></h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">💎</div>
+                <h3 class="feature-title">Çmime Konkurruese</h3>
+                <p class="feature-description">Ofrojmë çmimet më të mira në treg me pagesë fleksibël dhe pa tarifa të fshehura.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Sigurim i Plotë</h3>
+                <p class="feature-description">Udhëtoni me qetësi, të gjitha paketat tona përfshijnë sigurim të plotë udhëtimi.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">⭐</div>
+                <h3 class="feature-title">Shërbim 24/7</h3>
+                <p class="feature-description">Ekipi ynë është gjithmonë i disponueshëm për t'ju ndihmuar në çdo moment.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Eksperiencë Unike</h3>
+                <p class="feature-description">Krijojmë momente të paharrueshme me itinerare të personalizuara për ju.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <p class="section-label">Çfarë Thonë Klientët</p>
+            <h2 class="section-title">Dëshmitë e <span>Tyre</span></h2>
+        </div>
+        <div class="testimonials-grid" id="testimonialsContainer">
+            <!-- Testimonials will be loaded from localStorage -->
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <div class="section-header">
             <p class="section-label">Na Kontaktoni</p>
-            <h2 class="section-title">Le të <span>Flasim</span></h2>
-            <div class="divider"></div>
+            <h2 class="section-title">Rezervoni <span>Tani</span></h2>
+            <p class="section-description">Jemi këtu për t'ju ndihmuar të planifikoni udhëtimin tuaj të ëndrrave</p>
         </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <h3>Jemi këtu për ju</h3>
-                <p>Keni pyetje rreth shërbimeve tona ose dëshironi të bashkoheni me ne? Na kontaktoni dhe do t'ju përgjigjemi sa më shpejt të jetë e mundur.</p>
-                <ul class="contact-details">
-                    <li>
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-text">
-                            <span>Telefon</span>
-                            <a href="tel:+355684045500">+355 68 404 5500</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-text">
-                            <span>Email</span>
-                            <a href="mailto:info@gfpworld.com">info@gfpworld.com</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-text">
-                            <span>Drejtor</span>
-                            <p>Lidiana Kockici</p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/globalfashionprogress_world/" target="_blank" class="social-link" title="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="TikTok">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0Omitted due to size."
-                        </svg>
-                    </a>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Emri Juaj</label>
+                        <input type="text" required placeholder="Shkruani emrin...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefoni</label>
+                        <input type="tel" required placeholder="+355 XX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Destinacioni</label>
+                        <input type="text" placeholder="Ku dëshironi të shkoni?">
+                    </div>
+                    <div class="form-group full">
+                        <label>Mesazhi Juaj</label>
+                        <textarea required placeholder="Tregoni më shumë për planet tuaja..."></textarea>
+                    </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Dërgoni Mesazh</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label>Emri Juaj</label>
-                            <input type="text" name="name" required placeholder="Shkruani emrin...">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" required placeholder="Shkruani email...">
-                        </div>
-                        <div class="form-group">
-                            <label>Telefon</label>
-                            <input type="tel" name="phone" placeholder="Shkruani numrin...">
-                        </div>
-                        <div class="form-group">
-                            <label>Mesazhi</label>
-                            <textarea name="message" required placeholder="Shkruani mesazhin tuaj..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Dërgo Mesazhin</button>
-                    </form>
-                </div>
-            </div>
+                <button type="submit" class="submit-contact-btn">Dërgo Mesazhin</button>
+            </form>
         </div>
     </section>
+
     <footer>
-        <div class="footer-logo">GLOBAL FASHION PROGRESS WORLD</div>
-        <p>© 2024 Global Fashion Progress World. Të gjitha të drejtat e rezervuara.</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Eren Travel</h3>
+                <p>Agjensia juaj profesionale e udhëtimit për destinacione të paharrueshme. Bashkohuni me mijëra klientë të kënaqur që kanë udhëtuar me ne.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/eren__travel" target="_blank" class="social-link">📷</a>
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📧</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Linqe të Shpejta</h4>
+                <ul>
+                    <li><a href="#home">Kryefaqja</a></li>
+                    <li><a href="#tours">Paketa</a></li>
+                    <li><a href="#categories">Kategoritë</a></li>
+                    <li><a href="#contact">Kontakti</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kategoritë</h4>
+                <ul>
+                    <li><a href="#tours">Guida me Autobus</a></li>
+                    <li><a href="#tours">Udhëtime me Avion</a></li>
+                    <li><a href="#tours">Pushime Ekzotike</a></li>
+                    <li><a href="#tours">Turne Individuale</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakti</h4>
+                <ul>
+                    <li><a href="tel:+355123456789">+355 12 345 6789</a></li>
+                    <li><a href="mailto:info@erentravel.com">info@erentravel.com</a></li>
+                    <li><a href="https://www.instagram.com/eren__travel">@eren__travel</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Eren Travel. Të gjitha të drejtat e rezervuara.</p>
+        </div>
     </footer>
+
     <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelector('.loader').classList.add('hidden');
-            }, 1500);
-        });
+        // Navigation scroll effect
         window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
+            const navbar = document.getElementById('navbar');
             if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
+                navbar.classList.add('scrolled');
             } else {
-                nav.classList.remove('scrolled');
+                navbar.classList.remove('scrolled');
             }
         });
+
+        // Mobile menu toggle
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('active');
         }
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Faleminderit për mesazhin! Do t\'ju kontaktojmë së shpejti.');
-            this.reset();
-        });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -900,20 +1152,192 @@
                 }
             });
         });
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
-        document.querySelectorAll('.service-card, .stat-item, .gallery-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Faleminderit për mesazhin! Do t\'ju kontaktojmë së shpejti.');
+            this.reset();
+        });
+
+        // Load tours from localStorage
+        function loadTours() {
+            const tours = JSON.parse(localStorage.getItem('erenTravelTours') || '[]');
+            const container = document.getElementById('toursContainer');
+
+            if (tours.length === 0) {
+                // Default tours if none exist
+                tours.push(
+                    {
+                        id: 1,
+                        title: 'Dubaj - Qyteti i Artë',
+                        category: 'Pushime Ekzotike',
+                        description: 'Përjetoni luksin dhe aventurën në Dubai. Vizitoni Burj Khalifa, bëni shopping në Dubai Mall dhe shijoni plazhet e mrekullueshme.',
+                        price: 1200,
+                        duration: '7 Ditë / 6 Net',
+                        people: '2-6 Persona',
+                        icon: '🏙️',
+                        badge: 'Popullore'
+                    },
+                    {
+                        id: 2,
+                        title: 'Turqia - Stamboll & Kapadokia',
+                        category: 'Guida me Autobus',
+                        description: 'Eksploroni historinë e pasur të Stambollit dhe peizazhet magjepsëse të Kapadokisë. Tur i plotë me guidë profesionale.',
+                        price: 650,
+                        duration: '5 Ditë / 4 Net',
+                        people: '10-30 Persona',
+                        icon: '🕌',
+                        badge: 'Ofertë'
+                    },
+                    {
+                        id: 3,
+                        title: 'Paris - Qyteti i Dashurisë',
+                        category: 'Udhëtime me Avion',
+                        description: 'Zbuloni magji e Parisit! Kulla Eiffel, Louvre, Champs-Élysées dhe shumë më tepër.',
+                        price: 890,
+                        duration: '4 Ditë / 3 Net',
+                        people: '2-4 Persona',
+                        icon: '🗼',
+                        badge: 'E Re'
+                    }
+                );
+                localStorage.setItem('erenTravelTours', JSON.stringify(tours));
+            }
+
+            container.innerHTML = tours.map(tour => `
+                <div class="tour-card fade-in">
+                    <div class="tour-image">
+                        ${tour.icon}
+                        ${tour.badge ? `<span class="tour-badge">${tour.badge}</span>` : ''}
+                        <button class="favorite-btn" onclick="toggleFavorite(${tour.id})">🤍</button>
+                    </div>
+                    <div class="tour-content">
+                        <p class="tour-category">${tour.category}</p>
+                        <h3 class="tour-title">${tour.title}</h3>
+                        <p class="tour-description">${tour.description}</p>
+                        <div class="tour-details">
+                            <span class="tour-detail">⏱️ ${tour.duration}</span>
+                            <span class="tour-detail">👥 ${tour.people}</span>
+                        </div>
+                        <div class="tour-footer">
+                            <div class="tour-price">€${tour.price}<span>/person</span></div>
+                            <button class="book-btn" onclick="bookTour(${tour.id})">Rezervo</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Reattach observer
+            document.querySelectorAll('.tour-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Load categories from localStorage
+        function loadCategories() {
+            const categories = JSON.parse(localStorage.getItem('erenTravelCategories') || '[]');
+            const container = document.getElementById('categoriesContainer');
+
+            if (categories.length === 0) {
+                categories.push(
+                    { id: 1, title: 'Guida me Autobus', description: 'Ture të organizuara me autobus luksoz', icon: '🚌' },
+                    { id: 2, title: 'Udhëtime me Avion', description: 'Fluturime direkte në destinacione kryesore', icon: '✈️' },
+                    { id: 3, title: 'Pushime Ekzotike', description: 'Destinacione ekzotike dhe pushime relaksuese', icon: '🏝️' },
+                    { id: 4, title: 'Turne Individuale', description: 'Paketa të personalizuara vetëm për ju', icon: '🎒' }
+                );
+                localStorage.setItem('erenTravelCategories', JSON.stringify(categories));
+            }
+
+            container.innerHTML = categories.map(cat => `
+                <div class="category-card fade-in">
+                    <span class="category-icon">${cat.icon}</span>
+                    <h3 class="category-title">${cat.title}</h3>
+                    <p class="category-description">${cat.description}</p>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.category-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Load testimonials from localStorage
+        function loadTestimonials() {
+            const testimonials = JSON.parse(localStorage.getItem('erenTravelTestimonials') || '[]');
+            const container = document.getElementById('testimonialsContainer');
+
+            if (testimonials.length === 0) {
+                testimonials.push(
+                    { id: 1, name: 'Arlinda Krasniqi', location: 'Prishtinë', text: 'Udhëtimi në Dubai ishte i mahnitshëm! Organizim perfekt dhe shërbim i shkëlqyer. Faleminderit Eren Travel!', rating: 5, avatar: 'AK' },
+                    { id: 2, name: 'Besar Shala', location: 'Tiranë', text: 'Paketa për Turqi ishte fantastike. Çdo detaj ishte i menduar me kujdes. Do të udhëtoj përsëri me ju!', rating: 5, avatar: 'BS' },
+                    { id: 3, name: 'Drita Morina', location: 'Gjakovë', text: 'Paris ishte ëndërr e realizuar! Hoteli, guidat, gjithçka ishte perfekte. Rekomandoj me shumë besim!', rating: 5, avatar: 'DM' }
+                );
+                localStorage.setItem('erenTravelTestimonials', JSON.stringify(testimonials));
+            }
+
+            container.innerHTML = testimonials.map(t => `
+                <div class="testimonial-card fade-in">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">${t.text}</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">${t.avatar}</div>
+                        <div class="author-info">
+                            <h4>${t.name}</h4>
+                            <p>${t.location}</p>
+                            <div class="rating">${'⭐'.repeat(t.rating)}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.testimonial-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function toggleFavorite(id) {
+            alert('Paketa u shtua në të preferuarat!');
+        }
+
+        function bookTour(id) {
+            const tours = JSON.parse(localStorage.getItem('erenTravelTours') || '[]');
+            const tour = tours.find(t => t.id === id);
+            if (tour) {
+                alert(`Ju po rezervoni: ${tour.title}\nÇmimi: €${tour.price}\n\nDo të kontaktoheni nga ekipi ynë së shpejti!`);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', function() {
+            loadTours();
+            loadCategories();
+            loadTestimonials();
+        });
+
+        // Reload data when localStorage changes (when admin updates)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'erenTravelTours') loadTours();
+            if (e.key === 'erenTravelCategories') loadCategories();
+            if (e.key === 'erenTravelTestimonials') loadTestimonials();
         });
     </script>
 </body>
